@@ -1,0 +1,100 @@
+<html>
+<head>
+	<title>image gallery</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" >
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/messages-display.css">
+
+</head>
+<body>
+
+  <!-- navbar  -->
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      
+        <a class="navbar-brand" href="#"><i class="fas fa-image"></i> imgs</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- navbar collapse  -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <!-- log in status -->
+            <% if(!loggedInUser){ %>
+              <li class="nav-item">
+                <a class="nav-link " href="/uploads"><i class="fas fa-upload"></i> Upload</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register"><i class="fas fa-user-plus"></i> Sign up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+              </li>
+            <% }else{ %>
+              <% if(loggedInUser.username === "Administrator" || user.isAdmin == true) { %> 
+                    <li class="nav-item">
+                      <a class="nav-link" href="inbox">Messages</a>
+                    </li>
+              <% } %> 
+              <li class="nav-item">
+                <a class="nav-link disabled">Logged in as <%= loggedInUser.username %></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/uploads"><i class="fas fa-upload"></i> Upload</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-in-alt"></i> Logout</a>
+              </li>
+          <% } %>
+            
+          </ul>
+        </div>
+    </nav>
+  </div>
+<!-- navbar  -->
+
+<!-- display messages  -->
+<div class="container messages">
+    <h3 style="text-align: center;">Messages</h3>
+    <% message.forEach((message) => { %>
+       <% if(!message) { %>
+            return <h4>No messages found!</h4>
+       <% }else { %>
+            <div class="messageBody">
+                <label style="display:inline;" class="headings mr-2">Name: <em><%=message.name%></em></label>
+                <label style="display:inline;" class="headings mr-2">Email: </label><em><%=message.email%></em>
+              
+                  <p class="message-text mt-2"><%=message.message%></p>
+          
+                
+            </div>
+            
+            <hr>
+       <% } %>
+   <% }) %>
+</div>
+
+
+  <footer>
+  
+    <a href="/contact" class="footer-menu">contact</a>
+    <a href="#" class="footer-menu">about</a>
+
+    <p id='footer-text'>This template is not to be passed on as your own work or listed in your own website for sale without giving 
+    due credit to the developer of this template.</p>
+
+  </footer>   
+
+   <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

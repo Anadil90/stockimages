@@ -1,0 +1,128 @@
+.jumbotron{
+    color: #2c3e50;
+    background: #ecf0f1;
+    margin-top: 58px!important;
+    
+
+}
+
+navbar-inverse{
+    background: #2c3e50;
+}
+
+.fa-image{
+    font-size: 24px;
+}
+
+.nav-link{
+    font-family: 'Montserrat', sans-serif;
+    color: #fff!important;
+}
+
+.nav-link:hover{
+    color: #f33939!important;
+}
+
+.navbar-brand{
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.card{
+    margin-bottom: 20px;
+    justify-content: space-between;
+    border: 1px solid #5e9ea6;
+}
+
+
+
+.navbar{
+    margin-bottom: 60px;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    
+}
+
+
+/* media query to resize navbar items for mobile devices  */
+
+@media  screen and (max-device-width: 574px) and (min-device-width: 320px) {
+    .navbar{
+       font-size: 29px;
+       
+    }
+
+    .navbar-toggler{
+        font-size:29px;
+    }
+
+    .navbar-brand{
+        font-size: 29px;
+    }
+}
+
+/* media query to size navbar according to grid width  */
+
+
+@media (min-width: 500px) {
+    .navbar{
+        width: calc(100% - 1.9rem)
+    }
+}
+
+
+@media (min-width: 576px) {
+    .navbar{
+        width: 510px!important;
+        
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .navbar{
+        width: 690px!important;
+    }
+}   
+@media only screen and (min-width: 992px){
+    .navbar{
+        width: 929px!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .navbar{
+        width: 1110px!important;
+        margin-bottom: 25px;
+    }
+}
+
+footer{
+    width: 100%;
+    height: 140px;
+    background-color: grey;
+    width: 100%;
+    margin-top: 120px;
+
+}
+
+.footer-menu{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    margin-left: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-menu:hover{
+    text-decoration: none;
+    color: #00ffbf;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+#footer-text{
+    display: block;
+    margin-top: 50px;
+    margin-left: 10px;
+    color: #ffffff;
+}

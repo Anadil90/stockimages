@@ -1,0 +1,63 @@
+body {
+    background-image: url("https://images.unsplash.com/photo-1522096823084-2d1aa8411c13?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80");
+    background-size: cover;
+    background-position: center;
+}
+.messages {
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: rgba(43, 181, 191, 0.57);
+    color: #f5f5dc;
+    width: 70%;
+}
+
+.messageBody {
+    background-color: rgba(0, 98, 163, 0.43);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.headings {
+    font-size: 17px;
+}
+
+.message-text {
+    border: 2px solid green;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    
+
+    
+}
+
+footer{
+    width: 100%;
+    height: 140px;
+    background-color: grey;
+    width: 100%;
+    margin-top: 120px;
+
+}
+
+.footer-menu{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 17px;
+    margin-left: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-menu:hover{
+    text-decoration: none;
+    color: #00ffbf;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+#footer-text{
+    display: block;
+    margin-top: 50px;
+    margin-left: 10px;
+    color: #ffffff;
+}

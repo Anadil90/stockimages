@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>image gallery</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" >
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+  <!-- navbar  -->
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      
+        <a class="navbar-brand" href="#"><i class="fas fa-image"></i> imgs</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- navbar collapse  -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <!-- log in status -->
+            <% if(!loggedInUser){ %>
+              <li class="nav-item">
+                <a class="nav-link " href="/uploads"><i class="fas fa-upload"></i> Upload</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register"><i class="fas fa-user-plus"></i> Sign up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+              </li>
+            <% }else{ %>
+              <% if(loggedInUser.username === "Administrator" || loggedInUser.isAdmin == true) { %> 
+                    <li class="nav-item">
+                      <a class="nav-link" href="/messages">Messages</a>
+                    </li>
+              <% } %> 
+              <li class="nav-item">
+                <a class="nav-link disabled">Logged in as <%= loggedInUser.username %></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/uploads"><i class="fas fa-upload"></i> Upload</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-in-alt"></i> Logout</a>
+              </li>
+          <% } %>
+            
+          </ul>
+        </div>
+    </nav>
+  </div>
+<!-- navbar  -->
+
+<!-- flash message  -->
+<div class='container'> 
+		 
+  <% if(error && error.length > 0){ %>
+  <div class='alert alert-danger' role='alert' style='margin-top: 60px;'><%= error %></div>
+   <% } %>
+
+   <% if(info && info.length > 0){ %>
+      <div class='alert alert-info' role='alert' style='margin-top: 60px;'><%= info %></div>
+  <% } %>
+   
+  <% if(success && success.length > 0){ %>
+     <div class='alert alert-success' role='alert' style='margin-top: 60px;'><%= success %></div>
+<% } %>
+ </div>
+
+	<!-- jumbotron -->
+	<div class="container">
+		<div class="jumbotron">
+		<h1><span><i class="fas fa-camera-retro"></i></span> Image Gallery</h1>
+		<p>A beautiful collection of images taken by generous contributors</p>
+  </div> 
+  
+  <div class="row">
+    <% if(files){ %>
+      <% files.forEach(function(file) { %>
+        <div class='col-lg-4 col-sm-6'>
+      
+          <div class="card" style="width: auto;">
+            <% if(file.isImage) { %>
+              <a href="/image/<%=file.filename%>/more"><img src="image/<%= file.filename %>" class="card-img-top" alt="..." height="260px"></a>
+            <% }else{ %>
+              <%= file.filename %>
+            <% } %>
+            
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+            <p class="card-text">upload date <%= file.uploadDate %> 
+              <!-- identify and display the uploader name or display guest as default -->
+                  uploaded by: <%= file.metadata.uploaderId %> 
+            </p>
+            <form action="download/<%= file.filename %>">
+              <button class="btn btn-success btn-md">Download</button>
+            </form>
+            </div>
+            
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+  
+   <footer>
+     <a href="/contact" class="footer-menu">contact</a>
+     <a href="#" class="footer-menu">about</a>
+
+     <p id='footer-text'>This template is not to be passed on as your own work or listed in your own website for sale without giving 
+     due credit to the developer of this template.</p>
+
+    </footer>   
+
+	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
